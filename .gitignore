@@ -2,5 +2,4 @@
 sandbox.php
 composer.*
 *.env
-.htaccess
 /vendor

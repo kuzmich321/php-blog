@@ -19,7 +19,8 @@ class Router {
 
         // params
         $queryParams = $url;
-        $controller = 'App\Controller\\';
+        $controller = 'App\Controllers\\';
+
         $dispatch = new $controller($controller_name, $action);
 
         if(method_exists($controller, $action)) {
