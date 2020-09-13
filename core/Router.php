@@ -19,7 +19,7 @@ class Router {
 
         // params
         $queryParams = $url;
-        $controller = 'App\Controllers\\';
+        $controller = 'App\Controllers\\' . $controller;
 
         $dispatch = new $controller($controller_name, $action);
 

@@ -2,8 +2,8 @@
 namespace Core;
 use \PDO;
 use \PDOException;
-use Core\H;
-use Core\DatabaseConnection;
+use H;
+use DatabaseConnection;
 
 class DB {
     private static $_instance = null;
@@ -11,7 +11,6 @@ class DB {
 
     private function __construct(DatabaseConnection $connection) {
         $this->pdo = $connection->pdo;
-        H::dnd($this->pdo);
     }
 
     public static function getInstance() {
