@@ -3,11 +3,11 @@ namespace Core;
 
 class Application {
     public function __construct() {
-        $this->_set_reporting();
-        $this->_unregister_globals();
+        $this->set_reporting();
+        $this->unregister_globals();
     }
 
-    private function _set_reporting() {
+    private function set_reporting() {
         if(DEBUG) {
             error_reporting(E_ALL);
             ini_set('display_errors', 1);
@@ -19,7 +19,7 @@ class Application {
         }
     }
 
-    private function _unregister_globals() {
+    private function unregister_globals() {
         if(ini_get('register_globals')) {
             $globalsAry = ['_SESSION', '_COOKIE', '_POST', '_GET', '_REQUEST', '_SERVER', '_ENV', '_FILES'];
             foreach( $globalsAry as $g) {

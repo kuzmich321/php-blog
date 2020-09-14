@@ -2,7 +2,11 @@
 namespace Core;
 
 class View {
-    protected $_head, $_body, $_siteTitle = SITE_TITLE, $_outputBuffer, $_layout = DEFAULT_LAYOUT;
+    protected $head;
+    protected $body;
+    protected $siteTitle = SITE_TITLE;
+    protected $outputBuffer;
+    protected $layout = DEFAULTlayout;
 
     public function __construct() {
 
@@ -13,7 +17,7 @@ class View {
         $viewString = implode(DS, $viewArr);
         if(file_exists(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php')) {
             include(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php');
-            include(ROOT .DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
+            include(ROOT .DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->layout . '.php');
         } else {
             die('View "'.$viewName.'" doesnt exist');
         }
@@ -21,38 +25,38 @@ class View {
 
     public function content($type) {
         if($type == 'head') {
-            return $this->_head;
+            return $this->head;
         } elseif($type == 'body') {
-            return $this->_body;
+            return $this->body;
         }
         return false;
     }
 
     public function start($type) {
-        $this->_outputBuffer = $type;
+        $this->outputBuffer = $type;
         ob_start();
     }
 
     public function end() {
-        if($this->_outputBuffer == 'head') {
-            $this->_head = ob_get_clean();
-        } elseif ($this->_outputBuffer == 'body') {
-            $this->_body = ob_get_clean();
+        if($this->outputBuffer == 'head') {
+            $this->head = ob_get_clean();
+        } elseif ($this->outputBuffer == 'body') {
+            $this->body = ob_get_clean();
         } else {
             die('U must first run the start method');
         }
     }
 
     public function siteTitle() {
-        return $this->_siteTitle;
+        return $this->siteTitle;
     }
 
     public function setSiteTitle($title) {
-        $this->_siteTitle = $title;
+        $this->siteTitle = $title;
     }
 
     public function setLayout($path) {
-        $this->_layout = $path;
+        $this->layout = $path;
     }
 
 }

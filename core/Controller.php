@@ -3,13 +3,15 @@ namespace Core;
 use Core\Application;
 
 class Controller extends Application {
-    protected $_controller, $_action;
-    public $view, $request;
+    protected $controller;
+    protected $action;
+    public $view;
+    public $request;
 
-    public function __construct($controller, $action) {
+    public function __construct($contr, $act) {
         parent::__construct();
-        $this->_controller = $controller;
-        $this->_action = $action;
+        $this->controller = $contr;
+        $this->action = $act;
         $this->request = new Input();
         $this->view = new View();
     }
