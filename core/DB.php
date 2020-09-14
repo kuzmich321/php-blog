@@ -14,8 +14,7 @@ class DB {
     private $lastInsertID = null;
 
 
-    private function __construct(DatabaseConnection $connect) {
-        $this->connection = $connect;
+    private function __construct(DatabaseConnection $connection) {
         $this->pdo = $this->connection->getPDO();
     }
 
