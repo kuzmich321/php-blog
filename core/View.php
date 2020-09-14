@@ -6,7 +6,7 @@ class View {
     protected $body;
     protected $siteTitle = SITE_TITLE;
     protected $outputBuffer;
-    protected $layout = DEFAULTlayout;
+    protected $layout = DEFAULT_LAYOUT;
 
     public function __construct() {
 
